@@ -6,7 +6,7 @@
 
     <groupId>com.codenjoy</groupId>
     <artifactId>codenjoy-builder</artifactId>
-    <version>1.0.27</version>
+    <version>1.0.28</version>
     <packaging>war</packaging>
 
     <properties>
@@ -15,7 +15,7 @@
              mvn jetty:run-war -Dcontext=another-context -->
         <context>codenjoy-contest</context>
 
-        <jetty.version>9.3.14.v20161028</jetty.version>
+        <jetty.version>9.4.19.v20190610</jetty.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -56,6 +56,8 @@
         <exclude.quadro>true</exclude.quadro>
         <exclude.lunolet>true</exclude.lunolet>
         <exclude.tetris>true</exclude.tetris>
+        <exclude.tetris>true</exclude.tetris>
+        <exclude.excitebike>true</exclude.excitebike>
     </properties>
 
     <repositories>
@@ -568,6 +570,24 @@
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>tetris-engine</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>excitebike</id>
+            <activation>
+                <property>
+                    <name>allGames</name>
+                </property>
+            </activation>
+            <properties>
+                <exclude.excitebike>false</exclude.excitebike>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>excitebike-engine</artifactId>
                     <version>${project.version}</version>
                 </dependency>
             </dependencies>
@@ -1282,6 +1302,27 @@
                                 <artifactItem>
                                     <groupId>${project.groupId}</groupId>
                                     <artifactId>tetris-engine</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+                                    <includes>resources/**/*</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-excitebike</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${exclude.excitebike}</skip>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>excitebike-engine</artifactId>
                                     <version>${project.version}</version>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
