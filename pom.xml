@@ -6,7 +6,7 @@
 
     <groupId>com.codenjoy</groupId>
     <artifactId>codenjoy-builder</artifactId>
-    <version>1.0.28</version>
+    <version>1.1.0</version>
     <packaging>war</packaging>
 
     <properties>
@@ -63,7 +63,7 @@
     <repositories>
         <repository>
             <id>codenjoy-releases</id>
-            <url>https://github.com/codenjoyme/codenjoy-repo/raw/master/snapshots</url>
+            <url>https://raw.githubusercontent.com/codenjoyme/codenjoy-repo/master/snapshots</url>
         </repository>
     </repositories>
 
@@ -152,7 +152,7 @@
             <properties>
                 <exclude.battlecity>false</exclude.battlecity>
             </properties>
-            <dependencies>                
+            <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>battlecity-engine</artifactId>
@@ -188,7 +188,7 @@
             <properties>
                 <exclude.chess>true</exclude.chess>
             </properties>
-            <dependencies>                
+            <dependencies>
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>chess-engine</artifactId>
@@ -702,7 +702,8 @@
                                 <artifactItem>
                                     <groupId>${project.groupId}</groupId>
                                     <artifactId>codenjoy-contest</artifactId>
-                                    <version>${project.version}</version>
+                                    <!--<version>${project.version}</version>-->
+                                    <version>1.0.28</version>
                                     <type>war</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
